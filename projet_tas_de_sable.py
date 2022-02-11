@@ -27,13 +27,14 @@ import tkinter as tk
 ###########
 =======
 # import librairie
-
+import tkinter as tk
 
 
 #####################################################
 
 #constante
-
+HAUTEUR= 600
+LARGEUR= 600
 
 
 #####################################################
