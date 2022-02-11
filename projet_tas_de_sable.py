@@ -42,9 +42,6 @@ def init_random_config(config):
 
 #####################################################
 
-<<<<<<< HEAD
-#programme pricipal
-=======
 #programme pricipale
 
 
@@ -55,10 +52,10 @@ def init_random_config(config):
 
 #####################################################
 #widget
-racine= tk.TK()
+racine = tk.TK()
 racine.title("Configuration courante")
 canvas = tk.Canvas(racine, height=HAUTEUR, width=LARGEUR)
-boutton=tk.Button(racine, text=aleatoire)
+boutton = tk.Button(racine, text=aleatoire)
 # placement des widgets
 canvas.grid(column=1, row=0)
 boutton.grid(column=0, row=1)
@@ -67,4 +64,3 @@ init_terrain()
 
 # boucle principale
 racine.mainloop()
->>>>>>> 618741c6f1fa7cc891003c954b6121c999e58095
