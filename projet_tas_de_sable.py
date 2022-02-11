@@ -32,3 +32,24 @@ LARGEUR= 600
 #####################################################
 
 #programme pricipale
+
+
+
+
+
+
+
+#####################################################
+#widget
+racine= tk.TK()
+racine.title("Configuration coourante")
+canvas = tk.Canvas(racine, height=HAUTEUR, width=LARGEUR)
+boutton=tk.Button(racine, text=aleatoire)
+# placement des widgets
+canvas.grid(column=1, row=0)
+
+
+init_terrain()
+
+# boucle principale
+racine.mainloop()
