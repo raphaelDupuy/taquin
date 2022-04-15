@@ -89,6 +89,37 @@ def sauvegarde():
             fic.write("\n")
     fic.close()
     
+ def load():
+    fic = open("sauvegarde", "r")
+    config = [[0 for i in range(N+2)] for j in range(N+2)]
+    ligne = fic.readline()
+    n = int(ligne)
+    if n != N:
+        fic.close()
+        return config
+    i = j = 1
+    for ligne in fic:
+        config[i][j] = int(ligne)
+        j += 1
+        if j == N + 1:
+            j = 1
+            i += 1
+    fic.close()
+    return config
+
+
+def load_bouton():
+    global config_cur, add_active, sous_active
+    if add_active:
+        config_cur = addition(config_cur, load())
+        add_active = False
+    elif sous_active:
+        config_cur = soustraction(config_cur, load())
+        sous_active = False
+    else:
+        config_cur = load()
+    affiche_grille(config_cur)   
+    
 def win():
     pass
 
