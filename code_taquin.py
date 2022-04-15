@@ -49,6 +49,8 @@ def move(direction):
                 grille[i][colonne] = grille[i+1][colonne]
             grille[3][colonne] = 0
     
+    # verifie si la partie est finie ou non
+    verif_victoire()    
 
 
 def win():
