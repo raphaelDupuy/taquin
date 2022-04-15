@@ -93,5 +93,4 @@ def verif_victoire():
             
 
 random_start()
-move('l')
 print(grille)
