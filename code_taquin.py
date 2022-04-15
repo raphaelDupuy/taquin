@@ -18,8 +18,8 @@ def random_start():
                     break
             grille[i][j] = cnt
             var.append(cnt)
-    a = grille[3][3]
-    grille[0][0], grille[3][3] = a, 0
+    # a = grille[3][3]
+    # grille[0][0], grille[3][3] = a, 0
     print(grille)
 
 
@@ -67,6 +67,14 @@ def move(direction):
                 grille[ligne][3-i] = grille[ligne][2-i]
             grille[ligne][0] = 0
 
+    # glisse une ligne vers la gauche (l pour left)
+    if direction == 'l':
+        if colonne == 3:
+            print('inutile')
+        else:
+            for i in range(colonne, 3):
+                grille[ligne][i] = grille[ligne][i+1]
+            grille[ligne][3] = 0
 
     # verifie si la partie est finie ou non
     verif_victoire()    
@@ -85,5 +93,5 @@ def verif_victoire():
             
 
 random_start()
-move('r')
+move('l')
 print(grille)
