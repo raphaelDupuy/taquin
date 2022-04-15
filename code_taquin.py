@@ -79,7 +79,16 @@ def move(direction):
     # verifie si la partie est finie ou non
     verif_victoire()    
 
-
+def sauvegarde():
+    """Sauvegarde la config courante dans le fichier sauvegarde"""
+    fic = open("sauvegarde", "w")
+    fic.write(str(N)+"\n")
+    for i in range(1, N+1):
+        for j in range(1, N+1):
+            fic.write(str(config_cur[i][j]))
+            fic.write("\n")
+    fic.close()
+    
 def win():
     pass
 
