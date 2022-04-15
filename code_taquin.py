@@ -44,7 +44,6 @@ def move(direction):
     if direction == 'u':
         if ligne == 3:
             print('inutile')
-            pass
         else:
             for i in range(ligne, 3):
                 grille[i][colonne] = grille[i+1][colonne]
@@ -54,14 +53,19 @@ def move(direction):
     if direction == 'd':
         if ligne == 0:
             print('inutile')
-            pass
         else:
-            print('oui')
             for i in range(0, ligne):
                 grille[3-i][colonne] = grille[2-i][colonne]
             grille[0][colonne] = 0
 
-    
+    # glisse une ligne vers la droite (r pour right)
+    if direction == 'r':
+        if colonne == 0:
+            print('inutile')
+        else:
+            for i in range(0, colonne):
+                grille[ligne][3-i] = grille[ligne][2-i]
+            grille[ligne][0] = 0
 
 
     # verifie si la partie est finie ou non
@@ -73,6 +77,7 @@ def win():
 
 
 def verif_victoire():
+    # verifie la victoire
     global grille
     if grille == [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]]:
         win()
@@ -80,5 +85,5 @@ def verif_victoire():
             
 
 random_start()
-move('d')
+move('r')
 print(grille)
