@@ -1,9 +1,19 @@
-# imports
+###########################################################################################################
+# imports des modules
 import random
+import tkinter as tk
 
-# globaux
+############################################################################################################
+# constantes
 grille = [[0]*4, [0]*4, [0]*4, [0]*4]
+LARGEUR=400
+HAUTEUR=400
+liste=[[1, 2, 3,4],
+       [ 5, 6,7,8],
+       [9, 10, 11,12],
+       [13,14,15,16]]
 
+############################################################################################################
 # fonctions
 
 
@@ -79,46 +89,6 @@ def move(direction):
     # verifie si la partie est finie ou non
     verif_victoire()    
 
-def sauvegarde():
-    """Sauvegarde la config courante dans le fichier sauvegarde"""
-    fic = open("sauvegarde", "w")
-    fic.write(str(N)+"\n")
-    for i in range(1, N+1):
-        for j in range(1, N+1):
-            fic.write(str(config_cur[i][j]))
-            fic.write("\n")
-    fic.close()
-    
- def load():
-    fic = open("sauvegarde", "r")
-    config = [[0 for i in range(N+2)] for j in range(N+2)]
-    ligne = fic.readline()
-    n = int(ligne)
-    if n != N:
-        fic.close()
-        return config
-    i = j = 1
-    for ligne in fic:
-        config[i][j] = int(ligne)
-        j += 1
-        if j == N + 1:
-            j = 1
-            i += 1
-    fic.close()
-    return config
-
-
-def load_bouton():
-    global config_cur, add_active, sous_active
-    if add_active:
-        config_cur = addition(config_cur, load())
-        add_active = False
-    elif sous_active:
-        config_cur = soustraction(config_cur, load())
-        sous_active = False
-    else:
-        config_cur = load()
-    affiche_grille(config_cur)   
     
 def win():
     pass
@@ -134,3 +104,33 @@ def verif_victoire():
 
 random_start()
 print(grille)
+#######################################################################################################
+# définition des widgets
+
+racine = tk.Tk()
+racine.title("Taquin")
+
+canvas=tk.Canvas(racine, width=LARGEUR, height=HAUTEUR, bg='orange')
+
+bouton_aleatoire=tk.Button(text="random start", command=random_start)
+
+# placement widgets
+canvas.grid(row=1,column=1)
+bouton_aleatoire.grid(row=1,column=2)
+
+# programme principal
+
+couleur=('grey', 27, 'bold')
+for i in range(4):
+    for j in range(4):
+        x, y=100*j, 100*i
+        A, B, C=(x, y), (x+100, y+100), (x+50, y+50)
+        rectangle= canvas.create_rectangle(A, B, fill="grey")
+        texte= canvas.create_text(C, text=liste[i][j], fill="black",
+                            font=couleur)
+
+canvas.delete(rectangle)
+canvas.delete(texte)
+
+#boucle principale
+racine.mainloop()
