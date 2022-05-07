@@ -32,6 +32,8 @@ def random_start():
     # a = grille[3][3]
     # grille[0][0], grille[3][3] = a, 0
     print(grille)
+       
+
 
 
 def get_line():
