@@ -1,3 +1,9 @@
+#####################################################
+# groupe LDDBI
+# Raphael DUPUY
+# Soumaya MEDIOUNI
+# Ebeguy Yapo
+# https://github.com/raphaelDupuy/projet_tas_de_sable
 ###########################################################################################################
 # imports des modules
 import random
@@ -157,17 +163,14 @@ bouton_save.grid(row=1,column=2)
 bouton_load.grid(row=2,column=2)
 # programme principal
 
-couleur=('grey', 27, 'bold')
-
 element=[None for i in range (17)]
 for i in range(4):
     for j in range(4):
         x, y=100*j, 100*i
-        A, B, C=(x, y), (x+100, y+100), (x+50, y+50)
-        rectangle= canvas.create_rectangle(A, B, fill="grey")
+        a, b, c=(x, y), (x+100, y+100), (x+50, y+50)
+        rectangle= canvas.create_rectangle(a, b, fill="grey")
         carre=grille[i][j]
-        nombre= canvas.create_text(C, text=grille[i][j], fill="black",
-                            font=couleur)
+        nombre= canvas.create_text(c, text=grille[i][j], fill="black")
         element[carre]=(rectangle,nombre)
 #supprime la derniere case
 canvas.delete(rectangle)
