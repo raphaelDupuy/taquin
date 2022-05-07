@@ -29,10 +29,11 @@ def random_start():
                     break
             grille[i][j] = cnt
             var.append(cnt)
-    # a = grille[3][3]
-    # grille[0][0], grille[3][3] = a, 0
-    print(grille)
-       
+    a = grille[3][3]
+    grille[0][0], grille[3][3] = a, 0
+random_start()
+print(grille)
+    
 
 
 
@@ -138,8 +139,7 @@ def verif_victoire():
 
             
 
-random_start()
-print(grille)
+
 #######################################################################################################
 # définition des widgets
 
