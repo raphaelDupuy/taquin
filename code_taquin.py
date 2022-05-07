@@ -8,10 +8,11 @@ import tkinter as tk
 grille = [[0]*4, [0]*4, [0]*4, [0]*4]
 LARGEUR=400
 HAUTEUR=400
-liste=[[1, 2, 3,4],
+grille=[[1, 2, 3,4],
        [ 5, 6,7,8],
        [9, 10, 11,12],
        [13,14,15,16]]
+i_empty, j_empty=3,3       
 
 ############################################################################################################
 # fonctions
@@ -44,6 +45,38 @@ def get_line():
     elif 0 in grille[3]:
         ligne = 3
     return ligne
+
+    
+def mouvement(event):
+    #si on clic sur un carre ses coordonees sont asssocie au nombre de celui ci
+    global i_empty, j_empty
+    i=event.y//100
+    j=event.x//100
+    print( i, j, grille[i][j])
+    carre=grille[i][j]
+    rectangle, texte=element[carre]
+    #deplacement si possible
+    if i+1 ==i_empty and j==j_empty:
+         canvas.move(rectangle, 0, 100)
+         canvas.move(texte, 0, 100)
+    elif j+1 ==j_empty and i==i_empty:
+        canvas.move(rectangle, 100, 0)
+        canvas.move(texte, 100, 0)        
+    elif i-1 ==i_empty and j==j_empty:
+                    canvas.move(rectangle, 0, -100)
+                    canvas.move(texte, 0, -100)
+    elif j-1 ==j_empty and i==i_empty:
+        canvas.move(rectangle, -100, 0)
+        canvas.move(texte, -100, 0)
+    
+    else:
+        return
+    grille[i][j],grille[i_empty][j_empty]=(
+        grille[i_empty][j_empty],grille[i][j])
+    i_empty=i
+    j_empty=j
+
+    
 
 
 def move(direction):
@@ -113,7 +146,7 @@ racine.title("Taquin")
 canvas=tk.Canvas(racine, width=LARGEUR, height=HAUTEUR, bg='orange')
 
 bouton_aleatoire=tk.Button(text="random start", command=random_start)
-
+canvas.bind("<Button-1>",mouvement)
 # placement widgets
 canvas.grid(row=1,column=1)
 bouton_aleatoire.grid(row=1,column=2)
@@ -121,16 +154,20 @@ bouton_aleatoire.grid(row=1,column=2)
 # programme principal
 
 couleur=('grey', 27, 'bold')
+
+element=[None for i in range (17)]
 for i in range(4):
     for j in range(4):
         x, y=100*j, 100*i
         A, B, C=(x, y), (x+100, y+100), (x+50, y+50)
         rectangle= canvas.create_rectangle(A, B, fill="grey")
-        texte= canvas.create_text(C, text=liste[i][j], fill="black",
+        carre=grille[i][j]
+        nombre= canvas.create_text(C, text=grille[i][j], fill="black",
                             font=couleur)
-
+        element[carre]=(rectangle,nombre)
+#supprime la derniere case
 canvas.delete(rectangle)
-canvas.delete(texte)
+canvas.delete(nombre)
 
 #boucle principale
 racine.mainloop()
