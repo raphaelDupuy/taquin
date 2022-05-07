@@ -142,6 +142,14 @@ def verif_victoire():
     global grille
     if grille == [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]]:
         win()
+              
+def save():
+    # sauvegarde la grille
+    fic = open('grille.txt', 'w')
+    for i in range(0, 4):
+        for j in range(0, 4):
+            fic.write(str(grille[i][j]) + '\n')
+    fic.close()
 
             
 
@@ -154,7 +162,7 @@ racine.title("Taquin")
 
 canvas=tk.Canvas(racine, width=LARGEUR, height=HAUTEUR, bg='orange')
 
-bouton_save=tk.Button(text="save")
+bouton_save=tk.Button(text="save", command=save)
 bouton_load=tk.Button(text="load")
 
 # placement widgets
