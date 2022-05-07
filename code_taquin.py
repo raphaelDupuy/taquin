@@ -69,6 +69,7 @@ def mouvement(event):
         canvas.move(rectangle, -100, 0)
         canvas.move(texte, -100, 0)
     
+    
     else:
         return
     grille[i][j],grille[i_empty][j_empty]=(
@@ -145,12 +146,13 @@ racine.title("Taquin")
 
 canvas=tk.Canvas(racine, width=LARGEUR, height=HAUTEUR, bg='orange')
 
-bouton_aleatoire=tk.Button(text="random start", command=random_start)
-canvas.bind("<Button-1>",mouvement)
+bouton_save=tk.Button(text="save")
+bouton_load=tk.Button(text="load")
+
 # placement widgets
 canvas.grid(row=1,column=1)
-bouton_aleatoire.grid(row=1,column=2)
-
+bouton_save.grid(row=1,column=2)
+bouton_load.grid(row=2,column=2)
 # programme principal
 
 couleur=('grey', 27, 'bold')
@@ -168,6 +170,7 @@ for i in range(4):
 #supprime la derniere case
 canvas.delete(rectangle)
 canvas.delete(nombre)
-
+#liaison d evenement
+canvas.bind("<Button-1>",mouvement)
 #boucle principale
 racine.mainloop()
