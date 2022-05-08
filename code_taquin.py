@@ -2,7 +2,7 @@
 # groupe LDDBI
 # Raphael DUPUY
 # Soumaya MEDIOUNI
-# Ebeguy Yapo
+# Ebeguy YAPO
 # https://github.com/raphaelDupuy/projet_tas_de_sable
 ###########################################################################################################
 # imports des modules
