@@ -166,7 +166,7 @@ bouton_save=tk.Button(text="save", command=save)
 bouton_load=tk.Button(text="load")
 
 # placement widgets
-canvas.grid(row=1,column=1)
+canvas.grid(row=1,column=1, rowspan=2)
 bouton_save.grid(row=1,column=2)
 bouton_load.grid(row=2,column=2)
 # programme principal
