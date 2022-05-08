@@ -151,6 +151,17 @@ def save():
             fic.write(str(grille[i][j]) + '\n')
     fic.close()
 
+def load():
+    # charge la grille sauvegardée
+    global grille
+    fic = open('grille.txt', 'r')
+    for i in range(0, 4):
+        for j in range(0, 4):
+            grille[i][j] = int(fic.readline())
+    fic.close()
+    print (grille)
+    # Il faut afficher la grille sauvegardée sur le canvas
+
             
 
 
@@ -163,7 +174,7 @@ racine.title("Taquin")
 canvas=tk.Canvas(racine, width=LARGEUR, height=HAUTEUR, bg='orange')
 
 bouton_save=tk.Button(text="save", command=save)
-bouton_load=tk.Button(text="load")
+bouton_load=tk.Button(text="load", command=load)
 
 # placement widgets
 canvas.grid(row=1,column=1, rowspan=2)
